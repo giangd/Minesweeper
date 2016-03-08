@@ -1,7 +1,7 @@
 //iswon make it count clicked buttons too
 final static int NUM_COLS = 20;
 final static int NUM_ROWS = 20;
-final static int NUM_BOMBS = 20;
+final static int NUM_BOMBS = 100;
 
 import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
@@ -57,13 +57,13 @@ public boolean isWon() {
 public void displayLosingMessage() {
     play = false;
     textSize(50);
-    fill(30,255,30);
+    fill(255,50,50);
     text("YOU LOSE", width/2, height/2);
 }
 public void displayWinningMessage() {
     play = false;
     textSize(50);
-    fill(255,30,30);
+    fill(50,255,50);
     text("YOU WIN", width/2, height/2);
 }
 
