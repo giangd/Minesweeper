@@ -1,4 +1,4 @@
-//make display lose screen and win screen
+//iswon make it count clicked buttons too
 final static int NUM_COLS = 20;
 final static int NUM_ROWS = 20;
 final static int NUM_BOMBS = 20;
@@ -8,8 +8,11 @@ import de.bezier.guido.*;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList<MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
 boolean play = true;
+boolean win = false;
+boolean lose = false;
+
 void setup() {
-    size(400, 400);
+    size(500, 500);
     textSize(18);
     textAlign(CENTER,CENTER);
     
@@ -38,10 +41,7 @@ public void setBombs() {
     }
 }
 
-public void draw() {
-    background(0);
-    if(isWon())
-        displayWinningMessage();   
+public void draw() {   
 }
 public boolean isWon() {
     int numMarked = 0;
@@ -58,13 +58,13 @@ public void displayLosingMessage() {
     play = false;
     textSize(50);
     fill(30,255,30);
-    text("YOU WIN", width/2, height/2);
+    text("YOU LOSE", width/2, height/2);
 }
 public void displayWinningMessage() {
     play = false;
     textSize(50);
     fill(255,30,30);
-    text("YOU LOSE", width/2, height/2);
+    text("YOU WIN", width/2, height/2);
 }
 
 public class MSButton {
@@ -74,8 +74,8 @@ public class MSButton {
     private String label;
     
     public MSButton(int rr, int cc) {
-        width = 400/NUM_COLS;
-        height = 400/NUM_ROWS;
+        width = 500/NUM_COLS;
+        height = 500/NUM_ROWS;
         r = rr;
         c = cc; 
         x = c*width;
@@ -99,7 +99,7 @@ public class MSButton {
         if (keyPressed && !clicked) {
             marked = !marked;
         } else if (bombs.contains(this)) {
-            displayLosingMessage();
+            lose = true;
         } else if (countBombs(r,c) > 0) {
             label = Integer.toString(countBombs(r,c));
         } else {
@@ -127,6 +127,13 @@ public class MSButton {
         fill(0);
         textSize(18);
         text(label,x+width/2,y+height/2);
+        if (isWon()) {
+            displayWinningMessage();
+        }
+    
+        if (lose) {
+            displayLosingMessage();
+        }
     }
     public void setLabel(String newLabel) {
         label = newLabel;
