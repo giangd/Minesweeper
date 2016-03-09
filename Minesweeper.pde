@@ -54,7 +54,6 @@ public void draw() {
     } else if (lose) {
         displayLosingMessage();
     } 
-    println(lose);
 }
 
 void keyPressed() {
@@ -118,7 +117,7 @@ public class MSButton {
     
     public void mousePressed() {
         if (play) {
-            if (!keyPressed && mouseButton == LEFT && !marked) {
+            if (!keyPressed && mouseButton == LEFT && !marked || !keyPressed && !marked) {
                 clicked = true;
             }
             if (keyPressed && !clicked || mouseButton == RIGHT && !clicked) {
@@ -128,6 +127,7 @@ public class MSButton {
             } else if (countBombs(r,c) > 0  && !marked) {
                 label = Integer.toString(countBombs(r,c));
             } else if (!marked && clicked){
+                println(frameCount);
                 for (int row = -1; row < 2; row++) {
                     for (int col = -1; col < 2; col++) {
                         if (isValid(row+r,col+c) && !buttons[row+r][col+c].isClicked()) {
@@ -145,7 +145,7 @@ public class MSButton {
         else if (clicked && bombs.contains(this)) 
             fill(255,0,0);
         else if (clicked)
-            fill(200);
+            fill(210);
         else 
             fill(100);
 
