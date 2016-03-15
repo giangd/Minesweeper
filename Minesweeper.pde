@@ -13,7 +13,7 @@ boolean lose = false;
 boolean play = true;
 
 void setup() {
-    size(500, 600);
+    size(600, 700);
     textSize(18);
     textAlign(CENTER,CENTER);
 
@@ -84,15 +84,21 @@ public boolean isWon() {
 }
 public void displayLosingMessage() {
     play = false;
-    textSize(50);
-    fill(255,50,50);
-    text("YOU LOSE", width/2, 50);
+    textSize(30);
+    fill(200,50,50);
+    text("YOU LOSE! CLICK HERE TO LOSE AGAIN!", width/2, 50);
+    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
+        setup();
+    } 
 }
 public void displayWinningMessage() {
     play = false;
-    textSize(50);
-    fill(50,255,50);
-    text("YOU WIN", width/2, 50);
+    textSize(30);
+    fill(50,200,50);
+    text("YOU WIN CLICK HERE TO PLAY AGAIN!", width/2, 50);
+    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
+        setup();
+    } 
 }
 
 public class MSButton {
@@ -102,8 +108,8 @@ public class MSButton {
     private String label;
     
     public MSButton(int rr, int cc) {
-        width = 500/NUM_COLS;
-        height = 500/NUM_ROWS;
+        width = 600/NUM_COLS;
+        height = 600/NUM_ROWS;
         r = rr;
         c = cc; 
         x = c*width;
@@ -162,6 +168,10 @@ public class MSButton {
             fill(0, 121, 0);
         } else if (label.equals("3")) {
             fill(255, 0, 0);
+        } else if (label.equals("4")) {
+            fill(0,0,123);
+        } else if (label.equals("5")) {
+            fill(123,0,0);
         } else {
             fill(0);
         }
