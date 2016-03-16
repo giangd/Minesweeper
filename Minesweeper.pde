@@ -85,8 +85,8 @@ public boolean isWon() {
 public void displayLosingMessage() {
     play = false;
     textSize(30);
-    fill(200,50,50);
-    text("YOU LOSE! CLICK HERE TO LOSE AGAIN!", width/2, 50);
+    fill(255,50,50);
+    text("CLICK HERE TO LOSE AGAIN!", width/2, 50);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
@@ -95,7 +95,7 @@ public void displayWinningMessage() {
     play = false;
     textSize(30);
     fill(50,200,50);
-    text("YOU WIN CLICK HERE TO PLAY AGAIN!", width/2, 50);
+    text("CLICK HERE TO PLAY AGAIN!", width/2, 50);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
