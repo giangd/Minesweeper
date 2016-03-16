@@ -9,7 +9,7 @@ import de.bezier.guido.*;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList<MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
 float xAlign = 0;
-float yAlign = 17;
+float yAlign = 18;
 boolean win = false;
 boolean lose = false;
 boolean play = true;
