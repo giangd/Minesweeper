@@ -136,7 +136,7 @@ public class MSButton {
             } else if (bombs.contains(this) && !marked) {
                 lose = true;
             } else if (countBombs(r,c) > 0  && !marked) {
-                label = Integer.toString(countBombs(r,c));
+                label = ""+countBombs(r,c);
             } else if (!marked && clicked){
                 for (int row = -1; row < 2; row++) {
                     for (int col = -1; col < 2; col++) {
