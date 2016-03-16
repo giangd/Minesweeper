@@ -8,6 +8,8 @@ import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList<MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
+float xAlign = 0;
+float yAlign = 15;
 boolean win = false;
 boolean lose = false;
 boolean play = true;
@@ -86,7 +88,7 @@ public void displayLosingMessage() {
     play = false;
     textSize(30);
     fill(255,50,50);
-    text("CLICK HERE TO LOSE AGAIN!", width/2, 50);
+    text("CLICK HERE TO LOSE AGAIN!", width/2+xAlign, 50+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
@@ -95,7 +97,7 @@ public void displayWinningMessage() {
     play = false;
     textSize(30);
     fill(50,200,50);
-    text("CLICK HERE TO PLAY AGAIN!", width/2, 50);
+    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 50+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
@@ -176,7 +178,7 @@ public class MSButton {
             fill(0);
         }
         
-        text(label,x+width/2,y+height/2-2);
+        text(label,x+width/2+xAlign,y+height/2-2+yAlign);
         // if (isWon()) {
         //     displayWinningMessage();
         // }
