@@ -12,8 +12,6 @@ float yAlign = 18;
 boolean win = false;
 boolean lose = false;
 boolean play = true;
-int seconds = 0;
-int minutes = 0;
 
 void setup() {
     size(600, 700);
@@ -22,7 +20,6 @@ void setup() {
     win = false;
     lose = false;
     play = true;
-    frameCount = 0; 
     frameRate(30);
     // make the manager
     Interactive.make(this);
@@ -65,17 +62,8 @@ void keyPressed() {
     }
 }
 
-void timer() {
-    if (play) {
-        seconds = frameCount*2/60;
-        if (seconds < 0) {
-            seconds = 0;
-        }
-    }
-}
 
 public boolean isWon() {
-    timer();
     int numMarked = 0;
     int numClicked = 0;
     for (MSButton[] array : buttons) {
@@ -92,7 +80,6 @@ public boolean isWon() {
     return false;
 }
 public void displayLosingMessage() {
-    timer();
     play = false;
     textSize(30);
     fill(255,50,50);
@@ -105,8 +92,7 @@ public void displayWinningMessage() {
     play = false;
     textSize(30);
     fill(50,200,50);
-    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 40+yAlign);
-    text(seconds+" seconds", width/2+xAlign, 70+yAlign);
+    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 50+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
