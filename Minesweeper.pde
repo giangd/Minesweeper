@@ -1,7 +1,7 @@
 //somethimes when you flag in the beginning the blocks around it are flagged
 final static int NUM_COLS = 20;
 final static int NUM_ROWS = 20;
-final static int NUM_BOMBS = 1;
+final static int NUM_BOMBS = 40;
 
 import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
