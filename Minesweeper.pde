@@ -1,7 +1,7 @@
 //somethimes when you flag in the beginning the blocks around it are flagged
 final static int NUM_COLS = 20;
 final static int NUM_ROWS = 20;
-final static int NUM_BOMBS = 40;
+final static int NUM_BOMBS = 1;
 
 import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
@@ -12,16 +12,18 @@ float yAlign = 18;
 boolean win = false;
 boolean lose = false;
 boolean play = true;
+int seconds = 0;
+int minutes = 0;
 
 void setup() {
     size(600, 700);
     textSize(18);
     textAlign(CENTER,CENTER);
-
     win = false;
     lose = false;
     play = true;
-    
+    frameCount = 0; 
+    frameRate(30);
     // make the manager
     Interactive.make(this);
     
@@ -63,18 +65,24 @@ void keyPressed() {
     }
 }
 
-void restart() {
-
+void timer() {
+    if (play) {
+        seconds = frameCount*2/60;
+        if (seconds < 0) {
+            seconds = 0;
+        }
+    }
 }
 
 public boolean isWon() {
+    timer();
     int numMarked = 0;
     int numClicked = 0;
     for (MSButton[] array : buttons) {
         for (MSButton butt : array) {
             if (butt.isMarked() && bombs.contains(butt))
                 numMarked++;
-            if (butt.isClicked())
+            if (butt.isClicked() && !bombs.contains(butt))
                 numClicked++;
         }
     }
@@ -84,6 +92,7 @@ public boolean isWon() {
     return false;
 }
 public void displayLosingMessage() {
+    timer();
     play = false;
     textSize(30);
     fill(255,50,50);
@@ -96,7 +105,8 @@ public void displayWinningMessage() {
     play = false;
     textSize(30);
     fill(50,200,50);
-    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 50+yAlign);
+    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 40+yAlign);
+    text(seconds+" seconds", width/2+xAlign, 70+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
