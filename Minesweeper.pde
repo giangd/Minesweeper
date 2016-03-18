@@ -83,7 +83,7 @@ public void displayLosingMessage() {
     play = false;
     textSize(30);
     fill(255,50,50);
-    text("CLICK HERE TO LOSE AGAIN!", width/2+xAlign, 80+yAlign);
+    text("CLICK HERE TO LOSE AGAIN!", width/2+xAlign, 60+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
@@ -92,7 +92,7 @@ public void displayWinningMessage() {
     play = false;
     textSize(30);
     fill(50,200,50);
-    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 80+yAlign);
+    text("CLICK HERE TO PLAY AGAIN!", width/2+xAlign, 60+yAlign);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < 100 && mousePressed) {
         setup();
     } 
